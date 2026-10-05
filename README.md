@@ -105,3 +105,8 @@ Para que todo esto funcionara, hubo que vencer varios obstáculos tecnológicos 
 ---
 **Conclusión:**
 Este servidor dejó de ser un simple computador; hoy es un ecosistema inteligente, enlazado quirúrgicamente. Descarga contenido solo, te protege de publicidad, te da cámaras de vigilancia sin licencias corporativas y mantiene tus archivos seguros, todo de forma invisible.
+
+### Batalla 5: El Fantasma de Jellyfin
+* **Teoría del Problema:** Habíamos eliminado físicamente la carpeta de "CCTV Grabaciones" que enlazaba los videos a la televisión, pero Jellyfin es un sistema que almacena un caché estricto. Por ende, seguía mostrando en la pantalla de la televisión un cuadro azul de una biblioteca que ya no existía.
+* **Solución Técnica:** Se accedió al motor interno de bases de datos del sistema multimedia (Jellyfin).
+* **La Lógica:** Mediante una inyección SQL directa a `jellyfin.db`, se localizó el identificador único (`CollectionFolder`) de CCTV Grabaciones en la tabla `BaseItems` y se eliminó de raíz usando un comando `DELETE`. Tras reiniciar la memoria RAM del contenedor, el cuadro azul desapareció del televisor permanentemente.
